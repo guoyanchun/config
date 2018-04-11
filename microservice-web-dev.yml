@@ -3,8 +3,14 @@ server:
 spring:
   application:
     name: microservice-web
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   zipkin:
-    base-url: http://localhost:9002
+    rabbitmq:
+      queue: zipkin
   sleuth:
     sampler:
       percentage: 1.0
