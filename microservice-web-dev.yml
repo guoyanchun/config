@@ -37,8 +37,8 @@ logging:
   level:
     root: INFO
     org.hibernate: INFO
-feign:
-  hystrix:
+feign: 
+  okhttp: 
     enabled: true
 mybatis:
   mapper-locations: classpath:mapping/*.xml
@@ -47,15 +47,17 @@ init-db: true
 tm:
   manager:
     url: http://127.0.0.1:8899/tx/manager/
-security:
-  basic:
-    enabled: false
+paascloud:
+  enableSqlLogInterceptor: false
+  token:
+    interceptor:
+      enable: true
   oauth2:
-    resource:
-      jwt:
-        keyValue: |
-          -----BEGIN PUBLIC KEY-----
-          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnGp/Q5lh0P8nPL21oMMrt2RrkT9AW5jgYwLfSUnJVc9G6uR3cXRRDCjHqWU5WYwivcF180A6CWp/ireQFFBNowgc5XaA0kPpzEtgsA5YsNX7iSnUibB004iBTfU9hZ2Rbsc8cWqynT0RyN4TP1RYVSeVKvMQk4GT1r7JCEC+TNu1ELmbNwMQyzKjsfBXyIOCFU/E94ktvsTZUHF4Oq44DBylCDsS1k7/sfZC2G5EU7Oz0mhG8+Uz6MSEQHtoIi6mc8u64Rwi3Z3tscuWG2ShtsUFuNSAFNkY7LkLn+/hxLCu2bNISMaESa8dG22CIMuIeRLVcAmEWEWH5EEforTg+QIDAQAB
-          -----END PUBLIC KEY-----
-      id: openid
-      serviceId: ${PREFIX:}resource
+    jwtSigningKey: paascloud
+    client:
+      id: micorweb
+      accessTokenUrl: http://192.168.127.1:8764/uaa/oauth/token
+      clientId: microweb
+      clientSecret: microweb
+      clientAuthenticationScheme: header
+      tokenStore: jwt
