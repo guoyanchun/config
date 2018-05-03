@@ -61,7 +61,7 @@ paascloud:
     jwtSigningKey: paascloud
     client:
       id: micorweb
-      accessTokenUrl: http://192.168.127.1:8764/uaa/oauth/token
+      accessTokenUrl: http://127.0.0.1:8764/uaa/oauth/token
       clientId: microweb
       clientSecret: microweb
       clientAuthenticationScheme: header
