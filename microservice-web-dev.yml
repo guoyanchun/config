@@ -32,11 +32,13 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
-
+security:
+  basic:
+    enabled: false
 logging:
   level:
     root: INFO
-    org.hibernate: INFO
+    com.boyu.microserviceweb: DEBUG
 feign: 
   okhttp: 
     enabled: true
