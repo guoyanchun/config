@@ -52,17 +52,14 @@ management:
 tm:
   manager:
     url: http://127.0.0.1:8899/tx/manager/
-paascloud:
-  enableSqlLogInterceptor: false
-  token:
-    interceptor:
-      enable: true
+security:
   oauth2:
-    jwtSigningKey: paascloud
+    resource:
+      user-info-uri: http://microservice-api-gateway/user
+      id: ${spring.application.name:}
     client:
-      id: user-servicce
-      accessTokenUrl: http://127.0.0.1:8764/uaa/oauth/token
       clientId: user-servicce
       clientSecret: 1234
-      clientAuthenticationScheme: header
-      tokenStore: jwt
+      accessTokenUri: http://microservice-auth/uaa/oauth/token
+      grant-type: client_credentials
+      scope: server
