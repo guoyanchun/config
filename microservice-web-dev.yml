@@ -56,7 +56,7 @@ security:
   oauth2:
     resource:
       user-info-uri: http://microservice-api-gateway/user
-      id: ${spring.application.name:}
+      id: openid
     client:
       clientId: user-servicce
       clientSecret: 1234
