@@ -53,13 +53,15 @@ tm:
   manager:
     url: http://127.0.0.1:8899/tx/manager/
 security:
+  basic:
+    enabled: false
   oauth2:
-    resource:
-      user-info-uri: http://microservice-api-gateway/user
-      id: openid
     client:
       clientId: user-servicce
       clientSecret: 1234
       accessTokenUri: http://microservice-auth/uaa/oauth/token
       grant-type: client_credentials
       scope: server
+    resource:
+      user-info-uri: http://microservice-api-gateway/user
+      id: openid
